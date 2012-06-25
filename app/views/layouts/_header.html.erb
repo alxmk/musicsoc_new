@@ -1,13 +1,16 @@
 <header class="navbar navbar-fixed-top">
 	<div class="navbar-inner">
 		<div class="container">
-			<%= link_to "musicsoc booking system", root_path, id: "logo" %>
+			<%= link_to "[musicsoc] band room booking system", root_path, id: "logo" %>
 			<nav>
 				<ul class="nav pull-right">
 					<li><%= link_to "Home",		root_path %></li>
 					<li><%= link_to "FAQ",		faq_path %></li>
 					<% if user_signed_in? %>
 						<li><%= link_to "Booking Form", '#' %></li>
+						<% if current_user.admin? %>
+							<li><%= link_to "Admin Panel", admin_path %></li>
+						<% end %>
 						<li id="fat-menu" class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 								Account <b class="caret"></b>

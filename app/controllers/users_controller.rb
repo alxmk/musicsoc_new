@@ -44,13 +44,4 @@ class UsersController < ApplicationController
     redirect_to users_path
   end
   
-  private
-  
-  def check_admin
-    if !current_user.confirmed? || !current_user.admin?
-      flash[:error] = "Only confirmed site admins may access this area."
-      redirect_to root_path
-    end
-  end
-  
 end

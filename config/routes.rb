@@ -13,9 +13,10 @@ MusicsocNew::Application.routes.draw do
 
   root to: 'static_pages#home'
   
-  match '/faq',    to: 'static_pages#faq'
+  match '/faq',     to: 'static_pages#faq'
   match '/about',   to: 'static_pages#about'
   match '/contact', to: 'static_pages#contact'
+  match '/admin',   to: 'static_pages#admin'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
