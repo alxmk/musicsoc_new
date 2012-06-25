@@ -1,0 +1,30 @@
+<% starttime = Time.parse("#{thisday.year}-#{thisday.month}-#{thisday.day} 09:30:00 UTC") %>
+<% [0, 3, 6, 9, 12].each do |t| %>
+	<div class="span booking">
+		<% slottime = starttime + t.hours %>
+		<p>
+			<%= slottime.strftime("%H:%M") + " - " + 
+			(slottime + 2.hours).strftime("%H:%M")%>
+		</p>
+		<% booking = Booking.find_by_booking_time(slottime) %>
+		<% if booking && !booking.cancelled? %>
+			<p class="teeny booking-text pull-left">
+				<%= "Booked by:" %>
+				<br />
+				<%= "#{booking.user.email}" %>
+			</p>
+			<% if booking.user == current_user %>
+				<%= link_to image_tag('cross.png', alt: "Unbook this slot", 
+					class: "smallicon pull-right"), remove_booking_path(booking.id), 
+					method: :put, confirm: "Are you sure?",
+					title: "Remove this booking?" %>
+			<% end %>
+		<% else %>
+			<div class="btn-group">
+				<%= link_to "Book this slot", make_booking_path(0, 
+					booking_time: slottime), method: :put,
+					class: "btn btn-success", title: "Book this slot" %>
+			</div>
+		<% end %>
+	</div>
+<% end %>

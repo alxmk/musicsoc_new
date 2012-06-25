@@ -2,6 +2,13 @@ MusicsocNew::Application.routes.draw do
   
   devise_for :users
   
+  resources :bookings, :only => :index do
+    member do
+      put 'make'
+      put 'remove'
+    end
+  end
+  
   resources :users, :only => :index do
     member do
       put 'confirm'

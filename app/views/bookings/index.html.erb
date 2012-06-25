@@ -1,0 +1,12 @@
+<div class="hero-unit">
+	<h1>Bookings</h1><br/>
+	<% [0, 1, 2, 3, 4, 5, 6].each do |n| %>
+		<% thisday = @date + n.days %>
+		<div class="row table-border">
+			<div class="span2 date-label">
+				<p class="date-label-text"><%= thisday.strftime("%a %d/%m") %></p>
+			</div>
+			<%= render 'booking_day', :thisday => thisday %>
+		</div>
+	<% end %>
+</div>

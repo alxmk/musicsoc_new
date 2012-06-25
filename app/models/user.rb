@@ -15,6 +15,29 @@ class User < ActiveRecord::Base
                               
   validates :password,              length: { minimum: 6 }
   validates :password_confirmation, presence: true
+  
+  has_many :bookings
+  
+  default_scope :order => 'users.email ASC'
+  
+  def already_booked?
+    if admin?
+      return false
+    else
+      uncancelled_bookings = bookings.find_all_by_cancelled(false)
+      if !uncancelled_bookings.empty?
+        uncancelled_bookings.each do |ub|
+          if ub.booking_time >= Date.today
+            return true
+          end
+        end
+      else
+        return false
+      end
+      return false
+    end
+  end
+  
 end
 # == Schema Information
 #
