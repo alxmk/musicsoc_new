@@ -16,6 +16,11 @@ MusicsocNew::Application.routes.draw do
       put 'adminify'
       put 'unadminify'
     end
+    collection do
+      put 'initialise_database'
+      put 'purge_bookings'
+      put 'purge_unconfirmed'
+    end
   end
 
   root to: 'static_pages#home'
@@ -24,6 +29,7 @@ MusicsocNew::Application.routes.draw do
   match '/about',   to: 'static_pages#about'
   match '/contact', to: 'static_pages#contact'
   match '/admin',   to: 'static_pages#admin'
+  match '/database_tasks',  to: 'static_pages#database_tasks'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

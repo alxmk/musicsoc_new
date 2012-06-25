@@ -1,7 +1,7 @@
 class StaticPagesController < ApplicationController
   
   before_filter :soft_check_confirmed
-  before_filter :check_admin, only: :admin
+  before_filter :check_admin, only: [:admin, :database_tasks]
   
   def home
   end
@@ -16,6 +16,9 @@ class StaticPagesController < ApplicationController
   end
   
   def admin
+  end
+  
+  def database_tasks
   end
   
 end

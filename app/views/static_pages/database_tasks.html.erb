@@ -1,0 +1,32 @@
+<div class="hero-unit">
+	<h1>Database Tasks</h1>
+	<p>
+		<%= link_to "Purge old bookings", purge_bookings_users_path,
+		 	method: :put, confirm: "Are you sure? This is irreversible.",
+		 	title: "Purge old bookings?" %>
+		 - This will purge bookings older than
+		one month from the database. It is worth doing this every so often, or if the site
+		slows down at all when creating bookings.
+	</p>
+	<p>
+		<%= link_to "Purge unconfirmed users", purge_unconfirmed_users_path,
+		 	method: :put, confirm: "Are you sure? This is irreversible.",
+		 	title: "Purge unconfirmed users?" %>
+		 - This will purge unconfirmed users from the database, make sure you do this after
+		checking through the list for people who should be confirmed. In normal circumstances this
+		will be completely unnecessary to do, and should only be done if the number of excess
+		users is over 100.
+	</p>
+	<% if current_user.email == "su9music@bath.ac.uk" %>
+		<p id="theredbutton">
+			<%= link_to "Reset database", initialise_database_users_path,
+			 	method: :put, confirm: "ARE YOU 100% SURE? THIS IS *IRREVERSIBLE*!!",
+			 	title: "Reset database?" %>
+			 - *CAUTION* This will erase the entire database,
+			leaving just the su9music@bath.ac.uk account.
+			This is *irreversible*. This should only be used in the case of data corruption,
+			or at the end of the academic year when memberships are reset.
+		</p>
+	<% end %>
+	<p>
+</div>

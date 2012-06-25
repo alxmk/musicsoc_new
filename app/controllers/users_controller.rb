@@ -1,3 +1,7 @@
+require 'rake'
+
+MusicsocNew::Application.load_tasks
+
 class UsersController < ApplicationController
   
   before_filter :authenticate_user!
@@ -42,6 +46,29 @@ class UsersController < ApplicationController
     end
     flash[:success] = "Removed admin privileges for #{@user.email}!"
     redirect_to users_path
+  end
+  
+  def initialise_database
+    if current_user.email == "su9music@bath.ac.uk"
+      Booking.all.each { |b| b.destroy }
+      User.all.each { |u| u.destroy unless u.email == "su9music@bath.ac.uk" }
+      flash[:success] = "Database reset."
+    else
+      flash[:error] = "Don't do that."
+    end
+    redirect_to database_tasks_path
+  end
+  
+  def purge_bookings
+    Booking.all.each { |b| b.destroy unless b.booking_time > (Date.today - 1.month) }
+    flash[:success] = "Old bookings successfully purged."
+    redirect_to database_tasks_path
+  end
+  
+  def purge_unconfirmed
+    User.find_all_by_confirmed(false).each { |u| u.destroy }
+    flash[:success] = "Unconfirmed users successfully purged."
+    redirect_to database_tasks_path
   end
   
 end
