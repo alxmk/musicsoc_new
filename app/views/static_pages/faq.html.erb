@@ -1,3 +1,39 @@
 <% provide(:title, "FAQ") %>
-<h1>FAQ</h1>
-<p>Find me in app/views/static_pages/help.html.erb</p>
+<div class="hero-unit">
+	<h1>FAQ</h1>
+	<div class="row">
+		<div class="span9 offset1">
+			<dl>
+				<dt>Where is the band room?</dt><br/>
+				<div class="map">
+					<%= render 'map' %>
+				</div>
+				<dt>Where do I get the key?</dt>
+				<dd>From the cabinet opposite the security desk in the library reception.</dd>
+				<dt>How do I access the cabinet?</dt>
+				<dd>First, email your library card number (not your student number), full name and username to <strong>musicsoc.bandroom at gmail.com</strong>. Then you can use your library card to access the cabinet and withdraw the key.</dd>
+			
+			</dl>
+			<dl>
+				<dt>How do I get in?</dt><br/>
+				<iframe width="700" height="400" 
+					src="http://www.youtube.com/embed/KyEvK3E8ugA" frameborder="0" allowfullscreen>
+				</iframe><br/><br/>
+				<dt>What's MusicSoc?</dt>
+				<dd>
+					MusicSoc is the music society at the University of Bath. Unfortunately you can
+					only join if you're a student at the university, but most of our socials are open
+					for anyone to attend. If you want to keep up to date, please join our
+				 	<%= link_to "Facebook group", "http://www.facebook.com/groups/130934812093/" %>.
+				 	However, you are unable to use our band practice room. We recommend 
+					<%= link_to "Stage 2 Studios", "http://www.stage2studios.co.uk/" %>
+					as an alternative. If you are a student at the University of Bath, head on 
+					over to our page on 
+					<%= link_to "BathStudent", 
+						"http://www.bathstudent.com/socs/societies/musicsoc/" %> 
+					and join up today for the bargain price of £3!
+				</dd>
+			</dl>
+		</div>
+	</div>
+</div>
