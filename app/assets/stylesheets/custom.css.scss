@@ -17,7 +17,7 @@ html {
 }
 
 body {
-	padding-top: 60px;
+	padding-top: 20px;
 }
 
 section {
@@ -31,7 +31,7 @@ textarea {
 .center {
 	text-align: center;
 	h1 {
-		margin-bottom: 10px;
+		margin-bottom: 20px;
 	}
 }
 
@@ -83,7 +83,7 @@ p {
 /* footer */
 
 footer {
-	margin-top: 45px;
+	margin-top: 20px;
 	padding-top: 5px;
 	border-top: 1px solid $grayMediumLight;
 	color: $grayLight;
@@ -167,4 +167,10 @@ input, textarea, select, .uneditable-input {
 .field_with_errors {
 	@extend .control-group;
 	@extend .error;
+}
+
+/* home */
+
+#railspowered {
+	font-size: 0.5em;
 }
