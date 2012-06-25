@@ -1,7 +1,3 @@
-require 'rake'
-
-MusicsocNew::Application.load_tasks
-
 class UsersController < ApplicationController
   
   before_filter :authenticate_user!
