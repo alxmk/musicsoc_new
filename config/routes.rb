@@ -1,5 +1,7 @@
 MusicsocNew::Application.routes.draw do
   
+  devise_for :users
+
   root to: 'static_pages#home'
   
   match '/faq',    to: 'static_pages#faq'

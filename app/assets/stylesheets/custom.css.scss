@@ -17,7 +17,7 @@ html {
 }
 
 body {
-	padding-top: 20px;
+	padding-top: 60px;
 }
 
 section {
@@ -167,6 +167,10 @@ input, textarea, select, .uneditable-input {
 .field_with_errors {
 	@extend .control-group;
 	@extend .error;
+}
+
+.teeny {
+	font-size: 0.7em;
 }
 
 /* home */
