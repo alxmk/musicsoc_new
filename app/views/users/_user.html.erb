@@ -1,0 +1,31 @@
+<div class="row">
+	<div class="span2 users-table-element">
+		<%= link_to user.email, "mailto:#{user.email}" %>
+	</div>
+	<div class="span2 users-table-element">
+		<% if user.confirmed? %>
+			<%= image_tag('tick.png', alt: "Yes", class: "smallicon") %>
+		<% else %>
+			<%= image_tag('cross.png', alt: "No", class: "smallicon") %>
+		<% end %>
+	</div>
+	<div class="span2 users-table-element">
+		<% if user.admin? %>
+			<%= image_tag('tick.png', alt: "Yes", class: "smallicon") %>
+		<% else %>
+			<%= image_tag('cross.png', alt: "No", class: "smallicon") %>
+		<% end %>
+	</div>
+	<div class="span3 users-table-element">
+		<% if user.confirmed? %>
+			<%= link_to "Unconfirm User", unconfirm_user_path(user.id), :method => :put %>
+		<% else %>
+			<%= link_to "Confirm User", confirm_user_path(user.id), :method => :put %>
+		<% end %> | 
+		<% if user.admin? %>
+			<%= link_to "Remove as admin", unadminify_user_path(user.id), :method => :put %>
+		<% else %>
+			<%= link_to "Make admin", adminify_user_path(user.id), :method => :put %>
+		<% end %>
+	</div>
+</div>

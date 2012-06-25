@@ -1,6 +1,15 @@
 MusicsocNew::Application.routes.draw do
   
   devise_for :users
+  
+  resources :users, :only => :index do
+    member do
+      put 'confirm'
+      put 'unconfirm'
+      put 'adminify'
+      put 'unadminify'
+    end
+  end
 
   root to: 'static_pages#home'
   
