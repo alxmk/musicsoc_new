@@ -1,8 +1,14 @@
 <header class="navbar navbar-fixed-top">
 	<div class="navbar-inner">
 		<div class="container">
+			<button class="btn btn-navbar" data-target=".nav-collapse" 
+					data-toggle="collapse" type="button">
+				<span class="icon-bar"> </span>
+				<span class="icon-bar"> </span>
+				<span class="icon-bar"> </span>
+			</button>
 			<%= link_to "[musicsoc] band room booking system", root_path, id: "logo" %>
-			<nav>
+			<div class="nav-collapse collapse">
 				<ul class="nav pull-right">
 					<li><%= link_to "Home",		root_path %></li>
 					<li><%= link_to "FAQ",		faq_path %></li>
@@ -31,7 +37,7 @@
 						<li><%= link_to "Sign in",	new_user_session_path %></li>
 					<% end %>
 				</ul>
-			</nav>
+			</div>
 		</div>
 	</div>
 </header>
