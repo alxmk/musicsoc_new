@@ -8,14 +8,21 @@ class BookingsController < ApplicationController
       flash[:error] = "You've already booked a session this week!"
       redirect_to bookings_path
     else
-      @booking = current_user.bookings.build
-      @booking.booking_time = params[:booking_time]
-      if @booking.save
+      existing_booking = current_user.bookings.find_by_booking_time(params[:booking_time])
+      if existing_booking
+        existing_booking.toggle!(:cancelled)
         flash[:success] = "Booking made!"
         redirect_to bookings_path
       else
-        flash[:error] = "Something went wrong :( contact the MusicSoc committee asap!"
-        redirect_to bookings_path
+        @booking = current_user.bookings.build
+        @booking.booking_time = params[:booking_time]
+        if @booking.save
+          flash[:success] = "Booking made!"
+          redirect_to bookings_path
+        else
+          flash[:error] = "Something went wrong :( contact the MusicSoc committee asap!"
+          redirect_to bookings_path
+        end
       end
     end
   end
