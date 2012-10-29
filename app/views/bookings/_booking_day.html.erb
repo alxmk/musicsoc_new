@@ -6,7 +6,13 @@
 			<%= slottime.strftime("%H:%M") + " - " + 
 			(slottime + 2.hours).strftime("%H:%M")%>
 		</p>
-		<% booking = Booking.find_by_booking_time(slottime) %>
+		<% bookings = Booking.find_all_by_booking_time(slottime) %>
+		<% booking = nil %>
+		<% bookings.each do |b| %>
+			<% if !b.cancelled %>
+				<% booking = b %>
+			<% end %>
+		<% end %>
 		<% if booking && !booking.cancelled? %>
 			<p class="teeny booking-text pull-left">
 				<%= "Booked by:" %>
