@@ -15,6 +15,7 @@ MusicsocNew::Application.routes.draw do
       put 'unconfirm'
       put 'adminify'
       put 'unadminify'
+      put 'delete'
     end
     collection do
       put 'initialise_database'

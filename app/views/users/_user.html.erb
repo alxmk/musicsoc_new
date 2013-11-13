@@ -18,14 +18,17 @@
 	</div>
 	<div class="span3 users-table-element">
 		<% if user.confirmed? %>
-			<%= link_to "Unconfirm User", unconfirm_user_path(user.id), :method => :put %>
+			<%= link_to "Unconfirm", unconfirm_user_path(user.id), :method => :put %>
 		<% else %>
-			<%= link_to "Confirm User", confirm_user_path(user.id), :method => :put %>
-		<% end %> | 
+			<%= link_to "Confirm", confirm_user_path(user.id), :method => :put %>
+		<% end %>
 		<% if user.admin? %>
-			<%= link_to "Remove as admin", unadminify_user_path(user.id), :method => :put %>
+			<% if user.email != "su9music@bath.ac.uk" %>
+				| <%= link_to "Remove as admin", unadminify_user_path(user.id), :method => :put %>
+			<% end %>
 		<% else %>
-			<%= link_to "Make admin", adminify_user_path(user.id), :method => :put %>
+			| <%= link_to "Make admin", adminify_user_path(user.id), :method => :put %>
+			| <%= link_to "Delete User", delete_user_path(user.id), :method => :put %>
 		<% end %>
 	</div>
 </div>

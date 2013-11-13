@@ -67,4 +67,11 @@ class UsersController < ApplicationController
     redirect_to database_tasks_path
   end
   
+  def delete
+    @user = User.find(params[:id])
+    @user.destroy
+    flash[:success] = "User deleted."
+    redirect_to users_path
+  end
+  
 end
